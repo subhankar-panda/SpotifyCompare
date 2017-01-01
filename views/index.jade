@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	div.container-fluid
+		div.row
+			div.desc.text-center
+				span.spotify-green SpotifyCompare 
+				span is a website that compares artists' Spotify statistics. Give it a try by putting in 2 names below!
+
+	hr(style="width:1000px")
+	br
+	block error
+
+	div.container-fluid
+		div.row
+			div.artist-header.col-md-2.col-md-offset-2
+				span Artist
+				span.spotify-green  1
+				span :
+			div.artist-header.col-md-2.col-md-offset-4
+				span Artist
+				span.spotify-green  2
+				span :
+	form(action="/compare", method="post")
+		div.container-fluid
+			div.row.padding
+				div.col-md-5.col-md-offset-1.input-prompt Enter your Artist's name:
+					input(type="text",name="firstArtist", id="firstArtist", placeholder="Name..", class="input-box")
+				div.col-md-5.col-md-offset-1.input-prompt Enter your Artist's name:
+					input(type="text",name="secondArtist", id="secondArtist", placeholder="Name..", class="input-box")
+
+		div.container-fluid
+			div.row
+				input(type="submit", name="submit", class="btn center-block compare-button text-center" style="margin-top: 90px; font-size:30px")

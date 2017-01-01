@@ -1,0 +1,84 @@
+.title-style {
+	font-size: 80px;
+	color: White;
+	font-family: Pacifico, cursive; 
+}
+
+.body-class{
+	background-color: #060606;
+}
+
+.input-prompt{
+	color: White;
+	font-size: 20px;
+	font-family: Roboto, sans-serif;
+}
+
+.input-box{
+	font-size: 16px;
+	font-family: Roboto, sans-serif;
+	color: Black;
+	box-shadow: inset;
+ 	border-bottom: solid 2px #c9c9c9;
+  	transition: border 0.3s;
+}
+
+.padding{
+	margin-top: 30px;
+}
+
+.desc{
+	font-family: Viga, sans-serif;
+	font-size: 25px;
+	color: White;
+	margin-top: 30px;
+}
+
+.artist-header{
+	color: White;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.spotify-green{
+	color: rgb(75, 244, 63);
+}
+
+.compare-button{
+	width: 160px;
+	height: 60px;
+	font-size: 60px;
+	font-family: Roboto, sans-serif;
+	font-weight: bold;
+	color: White;
+	background-color: rgb(75, 244, 63);
+}
+
+.compare-button:hover{
+	background-color: White;
+	border-color: rgb(75, 244, 63);
+	color: Black;
+	border-width: 3px;
+}
+
+.error-class{
+	font-size: 30px;
+	font-family: Viga, sans-serif;
+	color: Red;
+}
+
+.error-padding{
+	margin-top:60px;
+}
+
+.table-header{
+	color: white;
+	font-family: Viga, sans-serif;
+	font-size: 40px;
+}
+
+.table-header-green{
+	color: rgb(75, 244, 63);
+	font-family: Viga, sans-serif;
+	font-size: 40px;
+}
