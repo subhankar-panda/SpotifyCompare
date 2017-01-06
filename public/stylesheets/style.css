@@ -82,3 +82,21 @@
 	font-family: Viga, sans-serif;
 	font-size: 40px;
 }
+
+.vertical_line{
+	height:150px; width:1px;
+	background-color: white;
+}
+
+.tabling{
+	width:800px;
+
+}
+
+th, td{
+	border: 1px solid white;
+}
+
+img{
+	border: 3px solid white;
+}

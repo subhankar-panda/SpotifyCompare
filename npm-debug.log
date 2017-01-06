@@ -9,7 +9,7 @@
 6 silly lifecycle test@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle test@0.0.0~start: test@0.0.0
 8 verbose lifecycle test@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle test@0.0.0~start: PATH: /Users/subhankarpanda/.npm-packages/lib/node_modules/npm/bin/node-gyp-bin:/Users/subhankarpanda/Documents/test/node_modules/.bin:/usr/local/bin:/usr/local/bin:/usr/local/bin:/Users/subhankarpanda/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+9 verbose lifecycle test@0.0.0~start: PATH: /Users/subhankarpanda/.npm-packages/lib/node_modules/npm/bin/node-gyp-bin:/Users/subhankarpanda/Documents/test/node_modules/.bin:/Users/subhankarpanda/.node/bin:/Users/subhankarpanda/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 10 verbose lifecycle test@0.0.0~start: CWD: /Users/subhankarpanda/Documents/test
 11 silly lifecycle test@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle test@0.0.0~start: Returned: code: 1  signal: null

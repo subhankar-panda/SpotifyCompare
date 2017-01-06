@@ -34,23 +34,24 @@ app.use('/', index);
 app.use('/users', users);
 //app.use('/compare' compare)
 app.get('/submitform', function(req, res){
-	var first_followers, second_followers;
+	var first_followers, second_followers, first_img, second_img;
 	spotifyApi.searchArtists(firstName, {'market':'US','limit':1}).then(function(data) {
     	first_followers = (data['body']['artists']['items'][0]['followers'].total).toString();
-    	console.log(first_followers);
-  	}, function(err) {
-  		console.error(err);
-  	},
-  	spotifyApi.searchArtists(secondName, {'market':'US','limit':1}).then(function(payload) {
-  		console.log(first_followers);
-    	//var first_followers = data['body']['artists']['items'][0]['followers'].total;
-    	second_followers = (payload['body']['artists']['items'][0]['followers'].total).toString();
-	  	res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
-    		'firstName' : firstName, 'secondName' : secondName});
-  	}, function(err) {
-    	console.error(err);
-  	}));
-  
+      first_img = data['body']['artists']['items'][0]['images'][0]['url'];
+    	console.log(data);
+  }, function(err) {
+  		console.log('err');
+  }).then(function(){
+      spotifyApi.searchArtists(secondName, {'market':'US','limit':1}).then(function(payload) {
+      //var first_followers = data['body']['artists']['items'][0]['followers'].total;
+      second_followers = (payload['body']['artists']['items'][0]['followers'].total).toString();
+      second_img = payload['body']['artists']['items'][0]['images'][0]['url'];
+      res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
+        'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img});
+      }, function(err) {
+        console.error(err);
+      });
+    });
 });
 
 app.post('/compare', function(req, res){

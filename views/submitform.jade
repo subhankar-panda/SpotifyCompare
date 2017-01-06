@@ -3,11 +3,26 @@ extend layout
 block content
 	br
 	hr(style="width:1000px; color:white")
+	br
+	br
 	div.container-fluid
 		div.row
-			div.col-md-0.col-md-offset-4
-				table(class="table")
-					thead
-						tr
-							th.table-header #{firstName}
-							th.table-header.spotify-green #{secondName}
+			div.text-center
+				table(class="tabling", align="center")
+					tr
+						td.table-header 
+							h1(id="artist_1_followers") #{firstName}
+							img(src="#{first_img}", style="width:230px; margin-bottom: 30px; border: 3px solid white; margin-top: 15px;")
+						td
+						td.table-header-green 
+							h1(id="") #{secondName}
+							img(src="#{second_img}", style="width:230px; margin-bottom: 30px; border: 3px solid white; margin-top: 15px;")
+
+					tr 
+						td.table-header #{first_followers}
+						td.table-header-green Followers
+						td.table-header #{second_followers}
+					tr
+						td.table-header 
+ 
+
