@@ -34,20 +34,35 @@ app.use('/', index);
 app.use('/users', users);
 //app.use('/compare' compare)
 app.get('/submitform', function(req, res){
-	var first_followers, second_followers, first_img, second_img;
+	var first_followers, second_followers, first_img, second_img, first_genres, second_genres;
 	spotifyApi.searchArtists(firstName, {'market':'US','limit':1}).then(function(data) {
+      var array = [];
     	first_followers = (data['body']['artists']['items'][0]['followers'].total).toString();
       first_img = data['body']['artists']['items'][0]['images'][0]['url'];
-    	console.log(data);
+
+      for(i = 0; i < 3; i++){
+        if((data['body']['artists']['items'][0]['genres'][i]) !== undefined){
+          array.push( " " + (data['body']['artists']['items'][0]['genres'][i])); 
+        }
+      }
+      first_genres = array.toString();
   }, function(err) {
   		console.log('err');
   }).then(function(){
       spotifyApi.searchArtists(secondName, {'market':'US','limit':1}).then(function(payload) {
-      //var first_followers = data['body']['artists']['items'][0]['followers'].total;
+      var array2 = [];
       second_followers = (payload['body']['artists']['items'][0]['followers'].total).toString();
       second_img = payload['body']['artists']['items'][0]['images'][0]['url'];
+
+      for(j = 0; j < 3; j++){
+        if((payload['body']['artists']['items'][0]['genres'][j]) !== undefined){
+          array2.push(" " + payload['body']['artists']['items'][0]['genres'][j]);
+        }
+      }
+      second_genres = array2.toString();
+
       res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
-        'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img});
+        'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img, 'first_genres': first_genres, 'second_genres': second_genres});
       }, function(err) {
         console.error(err);
       });

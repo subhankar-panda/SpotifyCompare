@@ -89,7 +89,8 @@
 }
 
 .tabling{
-	width:800px;
+	width:830px;
+	table-layout: fixed;
 
 }
 
@@ -99,4 +100,6 @@ th, td{
 
 img{
 	border: 3px solid white;
+	margin-left: 20px;
+	margin-right: 20px; 
 }
