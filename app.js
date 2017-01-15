@@ -54,7 +54,6 @@ app.get('/submitform', function(req, res){
     	first_followers = (data['body']['artists']['items'][0]['followers'].total).toString();
       first_img = data['body']['artists']['items'][0]['images'][0]['url'];
       first_id = data['body']['artists']['items'][0]['id'];
-      console.log(first_id);
 
       //using JavaScript's toString() implementation to get a comma separated list of genres
       for(i = 0; i < 3; i++){
@@ -70,14 +69,13 @@ app.get('/submitform', function(req, res){
         //console.log(drop);
         //console.log(drop['body']['tracks'][0]['name']);
         //console.log(drop['body']['tracks'][1]['name']);
-        /*for(a = 0; a < 3; a++){
+        first_top_tracks = {};
+        for(a = 0; a < 3; a++){
           if(drop['body']['tracks'][a]['name'] !== undefined){
-            first_top_tracks.push(drop['body']['tracks'][a]['name']);
+            var temp = drop['body']['tracks'][a]['name'];
+            first_top_tracks[temp] = drop['body']['tracks'][a]['href'];
           }   
-        }*/
-        first_top_tracks = {
-          //'drop['body']['tracks'][a]['name']' : drop['body']['tracks'][a]['name'],
-        };
+        }
       }, function(err) {
         console.log('Something went wrong!', err);
       });
@@ -86,6 +84,8 @@ app.get('/submitform', function(req, res){
       var array2 = [];
       second_followers = (payload['body']['artists']['items'][0]['followers'].total).toString();
       second_img = payload['body']['artists']['items'][0]['images'][0]['url'];
+      second_id = payload['body']['artists']['items'][0]['id'];
+
 
       //using JavaScript's toString() implementation to get a comma separated list of genres
       for(j = 0; j < 3; j++){
@@ -96,12 +96,32 @@ app.get('/submitform', function(req, res){
       second_genres = array2.toString();
       //res.send(payload);
       //sending both artist's data as in json
-      res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
-      'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img, 
-      'first_genres': first_genres, 'second_genres': second_genres});
-      }, function(err) {
+      
+    }, function(err) {
         console.error(err);
+      }).then(function(){
+      spotifyApi.getArtistTopTracks(second_id, 'US').then(function(drop2) {
+        //console.log(drop);
+        //console.log(drop['body']['tracks'][0]['name']);
+        //console.log(drop['body']['tracks'][1]['name']);
+        second_top_tracks = {};
+        for(b = 0; b < 3; b++){
+          if(drop2['body']['tracks'][b]['name'] !== undefined){
+            var temp = drop2['body']['tracks'][b]['name'];
+            second_top_tracks[temp] = drop2['body']['tracks'][b]['href'];
+          }   
+        }
+        console.log(second_top_tracks);
+
+        res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
+      'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img, 
+      'first_genres': first_genres, 'second_genres': second_genres, 'first_top_tracks' : first_top_tracks, 
+      'second_top_tracks' : second_top_tracks
       });
+      }, function(err) {
+        console.log('Something went wrongerinos!', err);
+      });
+  })
     });
 });
 

@@ -17,7 +17,6 @@ block content
 						td.table-header-green 
 							h1(id="") #{secondName}
 							img(src="#{second_img}", style="width:230px; margin-bottom: 30px; border: 3px solid white; margin-top: 15px;")
-
 					tr 
 						td.table-header #{first_followers}
 						td.table-header-green Followers
@@ -27,9 +26,17 @@ block content
 						td.table-header-green Genres
 						td.table-header #{second_genres}
 					tr 
-						td
-							iframe(src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf", width="300", height="380", frameborder="0", allowtransparency="true")
+						td.table-header 
+							-var ob = first_top_tracks
+							each prop, link in ob
+								a(class="table-header-link", href="#{prop}") #{link}
+								br
+							
+						td.table-header-green Listen!
 
-						td.table-header Listen!
-
+						td.table-header
+							-var ob2 = second_top_tracks
+							each prop2, link2 in ob2
+								a(class="table-header-link", href="#{prop2}") #{link2}
+								br
 

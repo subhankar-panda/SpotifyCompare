@@ -103,3 +103,19 @@ img{
 	margin-left: 20px;
 	margin-right: 20px; 
 }
+
+.table-header-link{
+	color: white;
+	text-decoration: underline;
+	font-family: Viga, sans-serif;
+	font-size: 40px;	
+}
+
+.table-header-link:hover{
+	color: white;
+	text-decoration: none;
+	font-family: Viga, sans-serif;
+	font-size: 40px;	
+}
+
+
