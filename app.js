@@ -66,9 +66,6 @@ app.get('/submitform', function(req, res){
   		console.log('err');
   }).then(function(){
       spotifyApi.getArtistTopTracks(first_id, 'US').then(function(drop) {
-        //console.log(drop);
-        //console.log(drop['body']['tracks'][0]['name']);
-        //console.log(drop['body']['tracks'][1]['name']);
         first_top_tracks = {};
         for(a = 0; a < 3; a++){
           if(drop['body']['tracks'][a]['name'] !== undefined){
@@ -86,24 +83,17 @@ app.get('/submitform', function(req, res){
       second_img = payload['body']['artists']['items'][0]['images'][0]['url'];
       second_id = payload['body']['artists']['items'][0]['id'];
 
-
       //using JavaScript's toString() implementation to get a comma separated list of genres
       for(j = 0; j < 3; j++){
         if((payload['body']['artists']['items'][0]['genres'][j]) !== undefined){
           array2.push(" " + payload['body']['artists']['items'][0]['genres'][j]);
         }
       }
-      second_genres = array2.toString();
-      //res.send(payload);
-      //sending both artist's data as in json
-      
+      second_genres = array2.toString();      
     }, function(err) {
         console.error(err);
       }).then(function(){
       spotifyApi.getArtistTopTracks(second_id, 'US').then(function(drop2) {
-        //console.log(drop);
-        //console.log(drop['body']['tracks'][0]['name']);
-        //console.log(drop['body']['tracks'][1]['name']);
         second_top_tracks = {};
         for(b = 0; b < 3; b++){
           if(drop2['body']['tracks'][b]['name'] !== undefined){
@@ -111,14 +101,14 @@ app.get('/submitform', function(req, res){
             second_top_tracks[temp] = drop2['body']['tracks'][b]['href'];
           }   
         }
-        console.log(second_top_tracks);
 
-        res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
+      //sending both artist's data as in json
+      res.render('submitform', {'first_followers' : first_followers, 'second_followers' : second_followers, 
       'firstName' : firstName, 'secondName' : secondName, 'first_img': first_img, 'second_img': second_img, 
       'first_genres': first_genres, 'second_genres': second_genres, 'first_top_tracks' : first_top_tracks, 
       'second_top_tracks' : second_top_tracks
       });
-      }, function(err) {
+    }, function(err) {
         console.log('Something went wrongerinos!', err);
       });
   })
